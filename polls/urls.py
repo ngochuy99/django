@@ -5,7 +5,9 @@ app_name = 'polls'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
 
-    path('signin',views.signin,name = 'signin')
+    path('signin',views.signin,name = 'signin'),
+
+    path('login',views.login,name = 'login')
     #
     # path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     #

@@ -17,7 +17,7 @@ class Address(models.Model):
 
 
 class Customer(models.Model):
-    username = models.CharField(max_length=50,null=True)
+    username = models.CharField(max_length=50,null=True,unique=True)
     password = models.CharField(max_length=50,null=True)
     gender = models.CharField(max_length=20)
     dob = models.DateTimeField(max_length=50)

@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.utils.translation import gettext, gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class SignInForm(UserCreationForm):
@@ -19,8 +18,6 @@ class SignInForm(UserCreationForm):
     dob = forms.DateTimeField(label=_('Ngày sinh'),required=False)
     phone = forms.CharField(label=_('Số điện thoại'),required=False)
 
-
-
-    class Meta:
-        model = User
-        fields = ('username', 'first_name', 'middle_name', 'last_name', 'password1', 'password2', 'number', 'street', 'district', 'city','gender','dob','phone')
+class LoginForm(forms.Form):
+    username = forms.CharField(label=_('Tên tài khoản'),max_length=30, required=True)
+    password = forms.CharField(label=_("Mật khẩu"), strip=False,widget=forms.PasswordInput())
