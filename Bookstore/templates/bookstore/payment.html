@@ -1,0 +1,29 @@
+<div id="table" >
+    <h1 style="text-align:center">Hóa đơn thanh toán</h1>
+    <table style="text-align:center; margin-left:auto; margin-right:auto" border=1px solid black>
+        <thead>
+        <tr>
+            {% for attr_head in list %}
+                <th>{{ attr_head }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for attr in value %}
+            <tr>
+                <td>{{ attr.name }}</td>
+                <td>{{ attr.type }}</td>
+                <td>{{ attr.price }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h3 style="text-align:center">Tổng số sản phẩm: {{ cart.total_item }}</h3>
+    <h3 style="text-align:center">Tổng số tiền: {{ cart.total_price }}</h3>
+    <h3 style="text-align:center">Ngày thanh toán: {{ orderDate }}</h3>
+    <form style="text-align:center; margin-left:auto; margin-right:auto" action="/bookstore/pay" method="post">
+        {% csrf_token %}
+        <input type="submit"  value="Xác nhận">
+    </form>
+    <h1 style="text-align:center">{{ message }}</h1>
+</div>
