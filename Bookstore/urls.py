@@ -18,7 +18,11 @@ urlpatterns = [
 
     path('addcart/<str:type>/<int:id>', views.addcart),
 
-    path('addtocart/<str:type>/<int:id>', views.addtocart)
+    path('addtocart/<str:type>/<int:id>', views.addtocart),
+    
+    path('pay', views.pay),
+
+    path('saveorder', views.saveorder)
 
 
     # path('index/electronic', views.electronic_view, name = "electronic"),

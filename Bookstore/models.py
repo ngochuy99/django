@@ -31,10 +31,10 @@ class Shipment(models.Model):
 
 
 class Order(models.Model):
+    orderName = models.TextField()
+    orderEmail = models.TextField()
     quantity = models.IntegerField()
     total = models.FloatField()
-    orderDate = models.DateField()
-    payDate = models.DateField(null=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     shipment = models.ForeignKey(Shipment, on_delete=models.CASCADE)
 
@@ -46,8 +46,11 @@ class Book(models.Model):
     inStock = models.IntegerField()
     discount = models.IntegerField()
     image = models.TextField()
-    order = models.ManyToManyField(Order)
 
+class bookorder(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
 
 class Clothe(models.Model):
     name = models.TextField()
@@ -56,8 +59,12 @@ class Clothe(models.Model):
     inStock = models.IntegerField()
     discount = models.IntegerField()
     image = models.TextField()
-    order = models.ManyToManyField(Order)
 
+
+class clothesorder(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    clothes = models.ForeignKey(Clothe, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
 
 class Electronic(models.Model):
     name = models.TextField()
@@ -66,9 +73,12 @@ class Electronic(models.Model):
     inStock = models.IntegerField()
     discount = models.IntegerField()
     image = models.TextField()
-    order = models.ManyToManyField(Order)
 
 
+class electronicsorder(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    electronics = models.ForeignKey(Electronic, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
 
 
 def productFactory(productType):
